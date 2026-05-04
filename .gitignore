@@ -1,0 +1,14 @@
+._*
+.DS_Store
+__pycache__/
+*.pyc
+expenses.db
+*.db
+*.sqlite3
+venv/
+.env
+node_modules/
+package-lock.json
+package.json
+.agents/
+.claude/
