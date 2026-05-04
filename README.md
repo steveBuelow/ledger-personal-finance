@@ -112,8 +112,8 @@ Ledger/
 
 ## Installation
 ``` bash
-git clone https://github.com/steveBuelow/budget-tracker.git
-cd budget-tracker
+git clone https://github.com/steveBuelow/ledger-personal-finance.git
+cd ledger-personal-finance
 pip install -r requirements.txt
 python app.py
 ```
