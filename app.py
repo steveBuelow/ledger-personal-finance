@@ -14,7 +14,6 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 
 app.config.update(
     SESSION_COOKIE_SAMESITE='Lax',
-    SESSION_COOKIE_SECURE=is_prod,
     SESSION_COOKIE_SECURE=True,
 )
 
