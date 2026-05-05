@@ -6,42 +6,55 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 def create_user(username, password):
     hashed_pw = generate_password_hash(password)
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 "INSERT INTO users (username, password) VALUES (%s, %s)",
                 (username, hashed_pw)
             )
         conn.commit()
+    except Exception as e:
+        conn.rollback()
+        raise e
+    finally:
+        conn.close()
 
 
 def find_user(username, password):
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 "SELECT id, username, password FROM users WHERE username = %s",
                 (username,)
             )
             user = cur.fetchone()
+    finally:
+        conn.close()
     if user and check_password_hash(user['password'], password):
         return {'id': user['id'], 'username': user['username']}
     return None
 
 
 def get_user_by_id(user_id):
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 "SELECT id, username FROM users WHERE id = %s",
                 (user_id,)
             )
             return cur.fetchone()
+    finally:
+        conn.close()
 
 
 # ── EXPENSES ───────────────────────────────────────────────────────────────────
 
 def get_expenses(user_id):
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -53,6 +66,9 @@ def get_expenses(user_id):
                 (user_id,)
             )
             rows = cur.fetchall()
+    finally:
+        conn.close()
+
     result = []
     for row in rows:
         r = dict(row)
@@ -63,7 +79,8 @@ def get_expenses(user_id):
 
 
 def create_expense(expense_name, price, category, notes, user_id):
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -75,11 +92,17 @@ def create_expense(expense_name, price, category, notes, user_id):
             )
             new_id = cur.fetchone()['id']
         conn.commit()
-    return new_id
+        return new_id
+    except Exception as e:
+        conn.rollback()
+        raise e
+    finally:
+        conn.close()
 
 
 def delete_expense(expense_id, user_id):
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 "DELETE FROM expenses WHERE id = %s AND user_id = %s",
@@ -87,11 +110,17 @@ def delete_expense(expense_id, user_id):
             )
             deleted = cur.rowcount > 0
         conn.commit()
-    return deleted
+        return deleted
+    except Exception as e:
+        conn.rollback()
+        raise e
+    finally:
+        conn.close()
 
 
 def update_expense(expense_id, user_id, expense_name, price, category, notes):
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -106,13 +135,19 @@ def update_expense(expense_id, user_id, expense_name, price, category, notes):
             )
             updated = cur.rowcount > 0
         conn.commit()
-    return updated
+        return updated
+    except Exception as e:
+        conn.rollback()
+        raise e
+    finally:
+        conn.close()
 
 
 # ── NET WORTH ──────────────────────────────────────────────────────────────────
 
 def get_net_worth_history(user_id):
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -124,11 +159,14 @@ def get_net_worth_history(user_id):
                 (user_id,)
             )
             rows = cur.fetchall()
-    return [dict(r) for r in rows]
+        return [dict(r) for r in rows]
+    finally:
+        conn.close()
 
 
 def create_net_worth_entry(user_id, month, assets, liabilities):
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 """
@@ -141,13 +179,24 @@ def create_net_worth_entry(user_id, month, assets, liabilities):
                 (user_id, month, assets, liabilities)
             )
         conn.commit()
+    except Exception as e:
+        conn.rollback()
+        raise e
+    finally:
+        conn.close()
 
 
 def delete_net_worth_entry(user_id, month):
-    with get_db() as conn:
+    conn = get_db()
+    try:
         with conn.cursor() as cur:
             cur.execute(
                 "DELETE FROM net_worth WHERE user_id = %s AND month = %s",
                 (user_id, month)
             )
         conn.commit()
+    except Exception as e:
+        conn.rollback()
+        raise e
+    finally:
+        conn.close()
