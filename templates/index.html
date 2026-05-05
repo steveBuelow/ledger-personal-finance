@@ -262,6 +262,34 @@
   }
   .page-subtitle { font-size: 13px; color: var(--muted); margin-top: 0.2rem; }
 
+  .avatar-wrapper { position: relative; display: inline-block; }
+  .avatar-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    min-width: 120px;
+    z-index: 100;
+    padding: 4px;
+  }
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 13px;
+    text-align: left;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: inherit;
+  }
+  .dropdown-item:hover { background: var(--surface2); }
+
   /* ── STAT CARDS ── */
   .stats-grid {
     display: grid;
@@ -306,10 +334,7 @@
     line-height: 1;
     margin-bottom: 0.5rem;
   }
-  .stat-delta {
-    font-size: 12px;
-    font-weight: 500;
-  }
+  .stat-delta { font-size: 12px; font-weight: 500; }
   .stat-delta.up { color: var(--green); }
   .stat-delta.down { color: var(--red); }
 
@@ -347,66 +372,26 @@
 
   /* Category legend */
   .cat-legend { margin-top: 1rem; display: flex; flex-direction: column; gap: 6px; }
-  .cat-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 13px;
-  }
+  .cat-item { display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
   .cat-left { display: flex; align-items: center; gap: 8px; }
-  .cat-dot {
-    width: 8px; height: 8px;
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
+  .cat-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
   .cat-name { color: var(--muted2); }
   .cat-amount { font-family: var(--font-mono); font-size: 12px; color: var(--text); }
   .cat-pct { color: var(--muted); font-size: 11px; margin-left: 4px; }
 
   /* ── ANALYTICS ROW ── */
-  .analytics-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
+  .analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
   @media (max-width: 640px) { .analytics-grid { grid-template-columns: 1fr; } }
 
-  /* Monthly spending bar */
-  .month-bar-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
+  .month-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
   .month-label { font-size: 12px; color: var(--muted); width: 32px; flex-shrink: 0; }
-  .bar-track {
-    flex: 1;
-    height: 6px;
-    background: var(--surface3);
-    border-radius: 3px;
-    overflow: hidden;
-  }
+  .bar-track { flex: 1; height: 6px; background: var(--surface3); border-radius: 3px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 3px; background: var(--green); transition: width 0.6s cubic-bezier(.4,0,.2,1); }
-  .bar-fill.red { background: var(--red); }
   .month-val { font-family: var(--font-mono); font-size: 12px; color: var(--muted2); width: 64px; text-align: right; flex-shrink: 0; }
 
-  /* Insights */
-  .insight-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .insight-item { display: flex; align-items: flex-start; gap: 10px; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
   .insight-item:last-child { border-bottom: none; }
-  .insight-icon {
-    width: 28px; height: 28px;
-    border-radius: 7px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px;
-    flex-shrink: 0;
-  }
+  .insight-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
   .insight-text { font-size: 13px; line-height: 1.5; color: var(--muted2); }
   .insight-text strong { color: var(--text); font-weight: 500; }
 
@@ -432,16 +417,7 @@
   .tx-table tr:last-child td { border-bottom: none; }
   .tx-table tr:hover td { background: var(--surface2); }
 
-  .cat-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 3px 8px;
-    border-radius: 5px;
-    font-size: 11px;
-    font-weight: 500;
-  }
-
+  .cat-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 5px; font-size: 11px; font-weight: 500; }
   .tx-amount { font-family: var(--font-mono); font-size: 13px; font-weight: 500; }
   .tx-note { font-size: 12px; color: var(--muted); margin-top: 1px; }
 
@@ -518,11 +494,8 @@
   }
   .nw-big { font-family: var(--font-mono); font-size: 3rem; font-weight: 500; color: var(--green); line-height: 1; }
   .nw-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.5rem; }
-
   .nw-breakdown { display: flex; gap: 2.5rem; margin-top: 0.5rem; }
-  .nw-item { }
   .nw-item-val { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 500; }
-  .nw-item-label { font-size: 11px; color: var(--muted); }
 
   /* ── TOAST ── */
   .toast {
@@ -543,28 +516,12 @@
   .toast.show { transform: translateX(-50%) translateY(0); }
 
   /* ── EMPTY STATE ── */
-  .empty-state {
-    text-align: center;
-    padding: 3rem 1rem;
-    color: var(--muted);
-    font-size: 13px;
-  }
+  .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 13px; }
   .empty-icon { font-size: 2rem; margin-bottom: 0.75rem; opacity: 0.4; }
 
   /* ── NET WORTH FORM ── */
   .nw-form-grid { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 0.75rem; align-items: end; margin-bottom: 1rem; }
   @media (max-width: 640px) { .nw-form-grid { grid-template-columns: 1fr 1fr; } }
-
-  .loading { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 2rem; color: var(--muted); font-size: 13px; }
-
-  .spinner {
-    width: 16px; height: 16px;
-    border: 2px solid var(--border2);
-    border-top-color: var(--green);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
 
   /* scroll */
   ::-webkit-scrollbar { width: 6px; }
@@ -625,8 +582,13 @@
     </nav>
     <div class="topbar-right">
       <button class="btn btn-ghost" style="font-size:13px;padding:0.4rem 0.85rem" onclick="openModal()">+ Add expense</button>
-      <div class="avatar" id="user-avatar">U</div>
-      <button class="btn btn-ghost" style="font-size:12px;padding:0.4rem 0.7rem;color:var(--muted)" onclick="doLogout()">Out</button>
+
+      <div class="avatar-wrapper">
+        <div class="avatar" id="user-avatar" onclick="toggleDropdown()">U</div>
+        <div class="avatar-dropdown">
+          <button class="dropdown-item" onclick="doLogout()">Log out</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -636,7 +598,7 @@
     <div class="page active" id="page-dashboard">
       <div class="page-header">
         <div>
-          <div class="page-title">Good morning<span id="dash-greeting"></span></div>
+          <div class="page-title" id="dash-greeting"></div>
           <div class="page-subtitle" id="dash-date"></div>
         </div>
         <div style="display:flex;gap:0.5rem">
@@ -930,6 +892,10 @@ const toast = (msg) => {
   setTimeout(() => t.classList.remove('show'), 2800);
 };
 
+function safeJson(res) {
+  return res.json().catch(() => ({}));
+}
+
 // ══════════════════════════════════════════
 //  AUTH
 // ══════════════════════════════════════════
@@ -947,14 +913,17 @@ async function doLogin() {
   const user = document.getElementById('login-user').value.trim();
   const pass = document.getElementById('login-pass').value;
   if (!user || !pass) { showAuthError(err, 'Please fill in all fields.'); return; }
-  btn.textContent = 'Signing in…'; btn.disabled = true;
+  btn.textContent = 'Signing in...'; btn.disabled = true;
   try {
     const res = await fetch('/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: user, password: pass }), credentials: 'include' });
-    const data = await res.json();
+    const data = await safeJson(res);
     if (res.ok) { currentUser = user; await enterApp(); }
     else { showAuthError(err, data.error || 'Login failed.'); }
-  } catch { showAuthError(err, 'Connection error. Is the server running?'); }
-  finally { btn.textContent = 'Sign in'; btn.disabled = false; }
+  } catch {
+    showAuthError(err, 'Connection error. Is the server running?');
+  } finally {
+    btn.textContent = 'Sign in'; btn.disabled = false;
+  }
 }
 
 async function doSignup() {
@@ -964,14 +933,17 @@ async function doSignup() {
   const pass = document.getElementById('signup-pass').value;
   if (!user || !pass) { showAuthError(err, 'Please fill in all fields.'); return; }
   if (pass.length < 6) { showAuthError(err, 'Password must be at least 6 characters.'); return; }
-  btn.textContent = 'Creating…'; btn.disabled = true;
+  btn.textContent = 'Creating...'; btn.disabled = true;
   try {
     const res = await fetch('/signup', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: user, password: pass }), credentials: 'include' });
-    const data = await res.json();
+    const data = await safeJson(res);
     if (res.ok) { toast('Account created! Please sign in.'); switchTab('login'); document.getElementById('login-user').value = user; }
     else { showAuthError(err, data.error || 'Signup failed.'); }
-  } catch { showAuthError(err, 'Connection error.'); }
-  finally { btn.textContent = 'Create account'; btn.disabled = false; }
+  } catch {
+    showAuthError(err, 'Connection error.');
+  } finally {
+    btn.textContent = 'Create account'; btn.disabled = false;
+  }
 }
 
 function showAuthError(el, msg) { el.textContent = msg; el.style.display = 'block'; }
@@ -1000,13 +972,14 @@ async function enterApp() {
 
 function setGreeting() {
   const hour = new Date().getHours();
-  const greet = hour < 12 ? ', good morning' : hour < 17 ? ', good afternoon' : ', good evening';
-  document.getElementById('dash-greeting').textContent = greet + (currentUser ? ' ' + currentUser : '') + ' 👋';
+  const greet = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+  const name = currentUser ? ' ' + currentUser : '';
+  document.getElementById('dash-greeting').textContent = greet + name + ' \uD83D\uDC4B';
   document.getElementById('dash-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 // ══════════════════════════════════════════
-//  DATA LOADING  — real API calls
+//  DATA LOADING
 // ══════════════════════════════════════════
 async function loadAppData() {
   try {
@@ -1014,19 +987,18 @@ async function loadAppData() {
       fetch('/expenses',  { credentials: 'include' }),
       fetch('/net-worth', { credentials: 'include' }),
     ]);
-    if (expRes.ok) expenses = await expRes.json();
-    if (nwRes.ok)  netWorthHistory = await nwRes.json();
+    if (expRes.ok) expenses = await safeJson(expRes);
+    if (nwRes.ok)  netWorthHistory = await safeJson(nwRes);
   } catch (err) {
     console.error('Failed to load data:', err);
-    toast('Could not load data — check your connection');
+    toast('Could not load data - check your connection');
   }
-  // Pre-fill the net worth month input to current month
   const nwMonthEl = document.getElementById('nw-month');
   if (nwMonthEl) nwMonthEl.value = new Date().toISOString().slice(0, 7);
 }
 
 // ══════════════════════════════════════════
-//  API WRAPPERS  (wire up when backend ready)
+//  API WRAPPERS
 // ══════════════════════════════════════════
 async function apiAddExpense(payload) {
   const res = await fetch('/expenses', {
@@ -1035,16 +1007,23 @@ async function apiAddExpense(payload) {
     credentials: 'include',
     body: JSON.stringify(payload),
   });
-  if (!res.ok) { toast('Failed to add expense'); return null; }
-  const data = await res.json();
-  // Reload from server so we have the real id and created_at
+  if (!res.ok) {
+    const data = await safeJson(res);
+    toast(data.error || 'Failed to add expense');
+    return null;
+  }
+  const data = await safeJson(res);
   await loadAppData();
   return data;
 }
 
 async function apiDeleteExpense(id) {
   const res = await fetch('/expenses/' + id, { method: 'DELETE', credentials: 'include' });
-  if (!res.ok) { toast('Failed to delete expense'); return; }
+  if (!res.ok) {
+    const data = await safeJson(res);
+    toast(data.error || 'Failed to delete expense');
+    return;
+  }
   await loadAppData();
 }
 
@@ -1055,15 +1034,32 @@ async function apiUpdateExpense(id, payload) {
     credentials: 'include',
     body: JSON.stringify(payload),
   });
-  if (!res.ok) { toast('Failed to update expense'); return; }
+  if (!res.ok) {
+    const data = await safeJson(res);
+    toast(data.error || 'Failed to update expense');
+    return;
+  }
   await loadAppData();
 }
 
 // ══════════════════════════════════════════
 //  DASHBOARD
 // ══════════════════════════════════════════
+function toggleDropdown() {
+  const dropdown = document.querySelector('.avatar-dropdown');
+  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+document.addEventListener('click', (e) => {
+  const wrapper = document.querySelector('.avatar-wrapper');
+  if (wrapper && !wrapper.contains(e.target)) {
+    const dd = document.querySelector('.avatar-dropdown');
+    if (dd) dd.style.display = 'none';
+  }
+});
+
 function getFilteredExpenses() {
-  const months = parseInt(document.getElementById('month-filter').value);
+  const months = parseInt(document.getElementById('month-filter').value, 10);
   const cutoff = new Date();
   if (months === 0) { cutoff.setDate(1); cutoff.setHours(0,0,0,0); }
   else cutoff.setMonth(cutoff.getMonth() - months);
@@ -1074,7 +1070,8 @@ function refreshDashboard() {
   const filtered = getFilteredExpenses();
   const total = filtered.reduce((s, e) => s + e.amount, 0);
   const maxExp = filtered.reduce((m, e) => e.amount > m.amount ? e : m, { amount: 0, category: '—' });
-  const days = Math.max(1, Math.round((Date.now() - Math.min(...filtered.map(e => new Date(e.created_at)))) / 86400000) || 30);
+  const minTs = filtered.length ? Math.min(...filtered.map(e => new Date(e.created_at).getTime())) : null;
+  const days = minTs ? Math.max(1, Math.round((Date.now() - minTs) / 86400000)) : 30;
 
   document.getElementById('stat-total').textContent = fmtK(total);
   document.getElementById('stat-count').textContent = filtered.length;
@@ -1082,11 +1079,11 @@ function refreshDashboard() {
   document.getElementById('stat-max-cat').textContent = maxExp.category || '—';
   document.getElementById('stat-avg').textContent = fmtK(total / days);
 
-  // Delta vs same prior period
-  const delta = total * (0.05 + Math.random() * 0.1) * (Math.random() > 0.5 ? 1 : -1);
+  // Placeholder delta (replace once you calculate real prior period totals)
+  const delta = total ? total * 0.05 : 0;
   const deltaEl = document.getElementById('stat-total-delta');
-  deltaEl.textContent = (delta > 0 ? '↑ ' : '↓ ') + fmt(Math.abs(delta)) + ' vs prior';
-  deltaEl.className = 'stat-delta ' + (delta > 0 ? 'up' : 'down');
+  deltaEl.textContent = (delta >= 0 ? '↑ ' : '↓ ') + fmt(Math.abs(delta)) + ' vs prior';
+  deltaEl.className = 'stat-delta ' + (delta >= 0 ? 'up' : 'down');
 
   renderTrendChart(filtered);
   renderDonut(filtered);
@@ -1111,22 +1108,12 @@ function renderTrendChart(filtered) {
   if (trendChartInst) trendChartInst.destroy();
   trendChartInst = new Chart(ctx, {
     type: 'bar',
-    data: {
-      labels,
-      datasets: [{
-        label: 'Spending',
-        data,
-        backgroundColor: data.map((v, i) => i === data.length - 1 ? '#34d399' : 'rgba(52,211,153,0.25)'),
-        borderColor: '#34d399',
-        borderWidth: 1,
-        borderRadius: 6,
-      }]
-    },
+    data: { labels, datasets: [{ data, backgroundColor: data.map((_, i) => i === data.length - 1 ? '#34d399' : 'rgba(52,211,153,0.25)'), borderColor: '#34d399', borderWidth: 1, borderRadius: 6 }] },
     options: {
       responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed.y) } } },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' ' + fmt(c.parsed.y) } } },
       scales: {
-        x: { ticks: { color: '#7a7a82', font: { family: "'DM Mono'" }, autoSkip: false, maxRotation: 0 }, grid: { display: false }, border: { display: false } },
+        x: { ticks: { color: '#7a7a82', font: { family: "'DM Mono'" } }, grid: { display: false }, border: { display: false } },
         y: { ticks: { color: '#7a7a82', font: { family: "'DM Mono'" }, callback: v => fmtK(v) }, grid: { color: 'rgba(255,255,255,0.05)' }, border: { display: false } }
       }
     }
@@ -1140,20 +1127,14 @@ function renderDonut(filtered) {
   const total = sorted.reduce((s,[,v]) => s+v, 0);
   const ctx = document.getElementById('donutChart').getContext('2d');
   if (donutChartInst) donutChartInst.destroy();
-  if (!sorted.length) return;
+  const legend = document.getElementById('cat-legend');
+  if (!sorted.length) { legend.innerHTML = '<div class=\"empty-state\" style=\"padding:1rem 0\">No spending yet</div>'; return; }
   donutChartInst = new Chart(ctx, {
     type: 'doughnut',
-    data: {
-      labels: sorted.map(([k]) => k),
-      datasets: [{ data: sorted.map(([,v]) => +v.toFixed(2)), backgroundColor: sorted.map(([k]) => CAT_COLORS[k] || '#888'), borderWidth: 0, hoverOffset: 4 }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false, cutout: '68%',
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.parsed) + ' (' + Math.round(ctx.parsed/total*100) + '%)' } } }
-    }
+    data: { labels: sorted.map(([k]) => k), datasets: [{ data: sorted.map(([,v]) => +v.toFixed(2)), backgroundColor: sorted.map(([k]) => CAT_COLORS[k] || '#888'), borderWidth: 0, hoverOffset: 4 }] },
+    options: { responsive: true, maintainAspectRatio: false, cutout: '68%', plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' ' + fmt(c.parsed) + ' (' + Math.round(c.parsed/total*100) + '%)' } } } }
   });
 
-  const legend = document.getElementById('cat-legend');
   legend.innerHTML = sorted.slice(0,6).map(([k,v]) =>
     `<div class="cat-item">
       <div class="cat-left"><div class="cat-dot" style="background:${CAT_COLORS[k]||'#888'}"></div><span class="cat-name">${k}</span></div>
@@ -1171,7 +1152,7 @@ function renderMomBars() {
       <div class="month-label">${l}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${Math.round(monthly.data[i]/max*100)}%"></div></div>
       <div class="month-val">${fmtK(monthly.data[i])}</div>
-    </div>`).join('');
+    </div>`).join('') || '<div class="empty-state" style="padding:1rem 0">No history yet</div>';
 }
 
 function renderInsights(filtered, total) {
@@ -1181,12 +1162,11 @@ function renderInsights(filtered, total) {
   const avg = total / Math.max(filtered.length, 1);
   const el = document.getElementById('insights-list');
   el.innerHTML = [
-    topCat ? { icon:'📊', color:'var(--blue-dim)', text:`<strong>${topCat[0]}</strong> is your biggest spend at <strong>${fmt(topCat[1])}</strong> — ${Math.round(topCat[1]/total*100)}% of total.` } : null,
-    { icon:'📅', color:'var(--green-dim)', text:`You made <strong>${filtered.length}</strong> transactions averaging <strong>${fmt(avg)}</strong> each.` },
-    { icon:'💡', color:'var(--amber-dim)', text:`Your daily average is <strong>${fmtK(total/30)}</strong>. At this rate that's <strong>${fmtK(total/30*365)}</strong> per year.` },
+    topCat ? { icon:'\uD83D\uDCCA', color:'var(--blue-dim)', text:`<strong>${topCat[0]}</strong> is your biggest spend at <strong>${fmt(topCat[1])}</strong> — ${total ? Math.round(topCat[1]/total*100) : 0}% of total.` } : null,
+    { icon:'\uD83D\uDCC5', color:'var(--green-dim)', text:`You made <strong>${filtered.length}</strong> transactions averaging <strong>${fmt(avg)}</strong> each.` },
   ].filter(Boolean).map(i =>
     `<div class="insight-item"><div class="insight-icon" style="background:${i.color}">${i.icon}</div><div class="insight-text">${i.text}</div></div>`
-  ).join('');
+  ).join('') || '<div class="empty-state" style="padding:1rem 0">Add an expense to see insights</div>';
 }
 
 function renderRecentTx(list) {
@@ -1195,7 +1175,7 @@ function renderRecentTx(list) {
   tbody.innerHTML = list.map(e => `
     <tr>
       <td><div style="font-weight:500">${e.expense_name}</div>${e.notes ? `<div class="tx-note">${e.notes}</div>` : ''}</td>
-      <td><span class="cat-badge" style="background:${CAT_COLORS[e.category]}22;color:${CAT_COLORS[e.category]}">${CAT_EMOJIS[e.category]||'📦'} ${e.category}</span></td>
+      <td><span class="cat-badge" style="background:${(CAT_COLORS[e.category]||'#888')}22;color:${CAT_COLORS[e.category]||'#888'}">${CAT_EMOJIS[e.category]||'\uD83D\uDCE6'} ${e.category}</span></td>
       <td style="color:var(--muted)">${new Date(e.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</td>
       <td style="text-align:right"><span class="tx-amount" style="color:var(--red)">${fmt(e.amount)}</span></td>
     </tr>`).join('');
@@ -1206,8 +1186,7 @@ function renderRecentTx(list) {
 // ══════════════════════════════════════════
 function populateCatFilter() {
   const sel = document.getElementById('expense-cat-filter');
-  sel.innerHTML = '<option value="">All categories</option>' +
-    Object.keys(CAT_COLORS).map(c => `<option>${c}</option>`).join('');
+  sel.innerHTML = '<option value=\"\">All categories</option>' + Object.keys(CAT_COLORS).map(c => `<option>${c}</option>`).join('');
 }
 
 function filterExpenses() {
@@ -1220,20 +1199,18 @@ function filterExpenses() {
   renderExpensesTable(filtered);
 }
 
-function renderExpensesPage() {
-  renderExpensesTable(expenses);
-}
+function renderExpensesPage() { renderExpensesTable(expenses); }
 
 function renderExpensesTable(list) {
   const tbody = document.getElementById('all-expenses-body');
   if (!list.length) {
-    tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><div class="empty-icon">🧾</div>No expenses found</div></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><div class="empty-icon">\uD83E\uDDFE</div>No expenses found</div></td></tr>`;
     return;
   }
   tbody.innerHTML = [...list].sort((a,b) => new Date(b.created_at)-new Date(a.created_at)).map(e => `
     <tr>
       <td><div style="font-weight:500">${e.expense_name}</div></td>
-      <td><span class="cat-badge" style="background:${CAT_COLORS[e.category]}22;color:${CAT_COLORS[e.category]}">${CAT_EMOJIS[e.category]||'📦'} ${e.category}</span></td>
+      <td><span class="cat-badge" style="background:${(CAT_COLORS[e.category]||'#888')}22;color:${CAT_COLORS[e.category]||'#888'}">${CAT_EMOJIS[e.category]||'\uD83D\uDCE6'} ${e.category}</span></td>
       <td style="color:var(--muted)">${new Date(e.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</td>
       <td style="color:var(--muted)">${e.notes||'—'}</td>
       <td style="text-align:right"><span class="tx-amount" style="color:var(--red)">${fmt(e.amount)}</span></td>
@@ -1255,8 +1232,9 @@ async function deleteExpense(id) {
 }
 
 function editExpense(id) {
-  const e = expenses.find(x => x.id === id);
-  if (!e) return;
+  // IDs come from the backend as ints; normalize for comparison.
+  const e = expenses.find(x => String(x.id) === String(id));
+  if (!e) { toast('Could not find that expense'); return; }
   openModal();
   document.getElementById('modal-title').textContent = 'Edit expense';
   document.getElementById('modal-submit-btn').textContent = 'Save changes';
@@ -1306,20 +1284,34 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 // ══════════════════════════════════════════
 function renderNetWorthPage() {
   const sorted = [...netWorthHistory].sort((a,b) => a.month.localeCompare(b.month));
-  if (!sorted.length) return;
+  const tbody = document.getElementById('nw-history-body');
+
+  if (!sorted.length) {
+    document.getElementById('nw-total').textContent = '$0.00';
+    document.getElementById('nw-assets').textContent = '$0.00';
+    document.getElementById('nw-liabilities').textContent = '$0.00';
+    document.getElementById('nw-change').textContent = '—';
+    tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><div class="empty-icon">\uD83D\uDCC9</div>No snapshots yet</div></td></tr>`;
+    if (nwChartInst) { nwChartInst.destroy(); nwChartInst = null; }
+    return;
+  }
+
   const latest = sorted[sorted.length - 1];
   const prev   = sorted.length > 1 ? sorted[sorted.length - 2] : null;
   const latestNW  = latest.assets - latest.liabilities;
   const prevNW    = prev ? prev.assets - prev.liabilities : null;
   const change    = prevNW !== null ? latestNW - prevNW : null;
 
-  document.getElementById('nw-total').textContent      = fmt(latestNW);
-  document.getElementById('nw-assets').textContent     = fmt(latest.assets);
-  document.getElementById('nw-liabilities').textContent= fmt(latest.liabilities);
+  document.getElementById('nw-total').textContent       = fmt(latestNW);
+  document.getElementById('nw-assets').textContent      = fmt(latest.assets);
+  document.getElementById('nw-liabilities').textContent = fmt(latest.liabilities);
   const changeEl = document.getElementById('nw-change');
   if (change !== null) {
     changeEl.textContent = (change >= 0 ? '+' : '') + fmt(change);
     changeEl.style.color = change >= 0 ? 'var(--green)' : 'var(--red)';
+  } else {
+    changeEl.textContent = '—';
+    changeEl.style.color = 'var(--muted)';
   }
 
   renderNWChart(sorted);
@@ -1375,14 +1367,22 @@ async function saveNetWorth() {
   const month  = document.getElementById('nw-month').value;
   const assets = parseFloat(document.getElementById('nw-assets-input').value);
   const liab   = parseFloat(document.getElementById('nw-liab-input').value);
-  if (!month || isNaN(assets) || isNaN(liab)) { toast('Please fill all fields'); return; }
+
+  if (!month) { toast('You forgot the date!'); return; }
+  if (isNaN(assets) || isNaN(liab)) { toast('Please fill all fields'); return; }
+  if (assets < 0 || liab < 0) { toast('Values must be non-negative'); return; }
+
   const res = await fetch('/net-worth', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     body: JSON.stringify({ month, assets, liabilities: liab }),
   });
-  if (!res.ok) { toast('Failed to save snapshot'); return; }
+  if (!res.ok) {
+    const data = await safeJson(res);
+    toast(data.error || 'Failed to save snapshot');
+    return;
+  }
   await loadAppData();
   toast('Net worth snapshot saved');
   renderNetWorthPage();
@@ -1391,7 +1391,11 @@ async function saveNetWorth() {
 async function deleteNWEntry(month) {
   if (!confirm('Remove this entry?')) return;
   const res = await fetch('/net-worth/' + month, { method: 'DELETE', credentials: 'include' });
-  if (!res.ok) { toast('Failed to remove entry'); return; }
+  if (!res.ok) {
+    const data = await safeJson(res);
+    toast(data.error || 'Failed to remove entry');
+    return;
+  }
   await loadAppData();
   renderNetWorthPage();
   toast('Entry removed');
@@ -1415,10 +1419,11 @@ function showPage(name) {
 window.addEventListener('DOMContentLoaded', async () => {
   try {
     const res = await fetch('/me', { credentials: 'include' });
-    if (res.ok) { const d = await res.json(); currentUser = d.username; await enterApp(); return; }
+    if (res.ok) { const d = await safeJson(res); currentUser = d.username; await enterApp(); return; }
   } catch {}
   document.getElementById('auth-screen').style.display = 'flex';
 });
 </script>
 </body>
 </html>
+
