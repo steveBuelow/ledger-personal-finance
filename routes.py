@@ -28,7 +28,9 @@ def register_routes(app):
 
     @app.route('/login', methods=['POST'])
     def login():
-        data = request.get_json()
+        data = request.get_json(silent=True)
+        if not data:
+            return jsonify({"error": "Request must be JSON"}), 400
         result = find_user(data.get('username'), data.get('password'))
         if result:
             session.permanent = True
