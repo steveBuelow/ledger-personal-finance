@@ -4,7 +4,9 @@
 
 🔗 **[Live Demo](https://ledger-personal-finance-p626.onrender.com)**
 
-![Ledger Dashboard Overview](<img width="1019" height="1096" alt="ledger-dashboard" src="https://github.com/user-attachments/assets/d1252d02-e4dd-4975-a63a-db5cce889a5c" />)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d1252d02-e4dd-4975-a63a-db5cce889a5c" width="900" alt="ledger-dashboard" />
+</p>
 
 ## Overview 
 Ledger is a web application designed to provide a comprehensive, data-driven view of personal financial health. This application was built to handle hundreds of budget expenses with persistent storage, secure authentication, and a modern, workflow-based interface.
@@ -25,7 +27,9 @@ A centralized system for logging and categorizing daily financial transactions.
 * Full CRUD lifecycle for over 200+ financial records.
 * Custom date-range filtering and dynamic querying.
 
-![Expense Tracking View](<img width="1010" height="684" alt="ledger-expenses-ui" src="https://github.com/user-attachments/assets/5ef44fa0-c25a-4659-9a44-e93b929e8cf5" />)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5ef44fa0-c25a-4659-9a44-e93b929e8cf5" width="900" alt="ledger-expenses-ui" />
+</p>
 
 ### Net Worth & Asset Management
 A persistent tracking system for long-term financial health.
@@ -33,7 +37,9 @@ A persistent tracking system for long-term financial health.
 * Liability tracking for loans and credit utilization.
 * Automated net worth calculation from monthly logs.
 
-![Net Worth View](<img width="1010" height="969" alt="ledger-net-worth-ui" src="https://github.com/user-attachments/assets/12699383-81a1-470d-9dd0-8f9eed632199" />)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/12699383-81a1-470d-9dd0-8f9eed632199" width="900" alt="ledger-net-worth-ui" />
+</p>
 
 ### Financial Analytics Dashboard
 Dynamic server-side data aggregation to visualize spending habits.
