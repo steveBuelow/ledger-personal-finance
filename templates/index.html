@@ -884,7 +884,18 @@ const fmtK = (n) => {
   const s = abs >= 1000 ? '$' + (abs/1000).toFixed(1) + 'k' : '$' + abs.toFixed(0);
   return n < 0 ? '-' + s : s;
 };
-const monthLabel = (iso) => { const d = new Date(iso + '-02'); return d.toLocaleString('en-US', { month: 'short', year: '2-digit' }); };
+const monthLabel = (dateString) => {
+  if (!dateString) return '—'; // Handle null/empty gracefully
+  
+  // Grab the first 10 chars (YYYY-MM-DD) and replace hyphens with slashes
+  const cleanStr = dateString.toString().substring(0, 10).replace(/-/g, '/');
+  const d = new Date(cleanStr);
+  
+  // Check if the resulting date is valid before trying to format it
+  if (isNaN(d)) return 'Invalid Date';
+  
+  return d.toLocaleString('en-US', { month: 'short', year: '2-digit' });
+};
 const toast = (msg) => {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -972,7 +983,7 @@ async function enterApp() {
 
 function setGreeting() {
   const hour = new Date().getHours();
-  const greet = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+  const greet = hour < 12 ? 'Good morning,' : hour < 17 ? 'Good afternoon,' : 'Good evening,';
   const name = currentUser ? ' ' + currentUser : '';
   document.getElementById('dash-greeting').textContent = greet + name + ' \uD83D\uDC4B';
   document.getElementById('dash-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
